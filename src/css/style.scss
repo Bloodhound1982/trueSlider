@@ -1,0 +1,62 @@
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size:  6vw;
+  font-family: "DejaVu Sans Condensed";
+}
+
+.container {
+  width: 40%;
+}
+
+[data-slider="slider"] {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  .slider_item {
+    box-sizing: border-box;
+    border: 2px solid darkred;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+img {
+  width: 100%;
+}
+.prev, .next {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  color: darkred;
+  border: 1px solid darkred;
+  margin-right: 20px;
+}
+.prev:hover, .next:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 6px darkred;
+  transition: 0.2s linear;
+}
+
+.hidden {
+  display: none;
+}
+.right {
+  display: inline-block;
+  left: 100%;
+}
+.left {
+  transition: 2s ease-out;
+
+}
+.left_hide {
+  left: -100%;
+  transition: 3s ease-out;
+}
+.show {
+  transition: 3s ease-out;
+  left: 0;
+}
+
