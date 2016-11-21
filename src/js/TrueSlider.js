@@ -119,7 +119,7 @@ function TrueSlider(options) {
     };
 
 
-    // this function wait 0.4s during item's content is loading
+    // this function wait 0.4s unless item's content is loading
     setTimeout(sliderHeight, 500);
 
     prevConstructor();
