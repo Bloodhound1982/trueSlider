@@ -1,3 +1,5 @@
+$button_color: darkred;
+$slider_width: 50%;
 h1 {
   text-align: center;
   text-transform: uppercase;
@@ -6,7 +8,7 @@ h1 {
 }
 
 .container {
-  width: 40%;
+  width: $slider_width;
 }
 
 [data-slider="slider"] {
@@ -16,28 +18,38 @@ h1 {
 
   .slider_item {
     box-sizing: border-box;
-    border: 2px solid darkred;
+    border: 2px solid $button_color;
     position: absolute;
     width: 100%;
   }
 }
-
 img {
   width: 100%;
 }
-.prev, .next {
-  margin-top: 20px;
-  display: inline-block;
-  padding: 5px 20px;
-  text-transform: uppercase;
-  color: darkred;
-  border: 1px solid darkred;
-  margin-right: 20px;
-}
-.prev:hover, .next:hover {
-  cursor: pointer;
-  box-shadow: 2px 2px 6px darkred;
-  transition: 0.2s linear;
+.controls {
+  display: flex;
+  justify-content: space-between;
+  .prev, .next, .pag_item {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 5px 10px;
+    color: $button_color;
+    border: 1px solid $button_color;
+  }
+  .prev:before {
+    content: '<';
+  }
+  .next:before {
+    content: '>';
+  }
+  .prev:hover, .next:hover, .pag_item:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 6px $button_color;
+    transition: 0.2s linear;
+  }
+  .pag_item {
+    margin-right: 2px;
+  }
 }
 .hidden {
   display: none;
