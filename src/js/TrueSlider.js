@@ -6,11 +6,9 @@ function TrueSlider(options) {
     var items = slider.querySelectorAll(".slider_item");
     var position = options.position || 0;
 
-
-    slider.style.height = items[0].clientHeight + 'px';
-
     items.forEach(function(element, index, arr) {
         if (index === position) {
+            slider.style.height = element.offsetHeight + 'px';
             element.classList.add('show');
             return;
         }
@@ -27,7 +25,8 @@ function TrueSlider(options) {
             dest.remove('hidden');
             dest.add('show');
 
-
+            current.remove('show');
+            current.add('hidden');
 
 
 
@@ -35,6 +34,6 @@ function TrueSlider(options) {
         }
     }
 
-   move(5);
+   // move(5);
 
 }

@@ -1,7 +1,8 @@
 "use strict";
 (function () {
-    var slider = new TrueSlider({position: 2});
-
+    document.addEventListener('load', function() {
+        var slider = new TrueSlider({position: 2});
+    }, true);
 
 
 })()
