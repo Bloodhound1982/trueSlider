@@ -1,0 +1,7 @@
+dist
+src/fonts
+src/img
+gulpfile.js
+package.json
+.idea/
+node_modules/
