@@ -31,11 +31,11 @@
     
 4. In your .js-file create new instance of True Slider:
 
-    ```var slider = new Slider();```
+    ```var slider = new TrueSlider();```
 
 5. If needs to add settings for timing slide-show or default position:
 
-    ```var slider = new Slider({ position: 3, autoplay: 3 });```
+    ```var slider = new TrueSlider({ position: 3, autoplay: 3 });```
     
     *position* - number start slide (0 ... length - 1),
     
