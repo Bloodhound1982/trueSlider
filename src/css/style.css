@@ -5,7 +5,7 @@ h1 {
   font-family: "DejaVu Sans Condensed"; }
 
 .container {
-  width: 50%; }
+  width: 40%; }
 
 [data-slider="slider"] {
   position: relative;
@@ -41,7 +41,8 @@ img {
     margin-right: 2px; }
 
 .hidden {
-  display: none; }
+  display: none;
+  z-index: 0; }
 
 .show {
   margin-left: 0; }
@@ -50,8 +51,27 @@ img {
   display: block;
   margin-left: 100%; }
 
+.delta_right {
+  animation-name: to_left;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  z-index: 3; }
+
 .left {
   display: block;
   margin-left: -100%; }
+
+.delta_left {
+  animation-name: to_right;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  z-index: 3; }
+
+@keyframes to_left {
+  to {
+    transform: translateX(-100%); } }
+@keyframes to_right {
+  to {
+    transform: translateX(100%); } }
 
 /*# sourceMappingURL=style.css.map */

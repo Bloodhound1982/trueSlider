@@ -32,20 +32,17 @@ function TrueSlider(options) {
         slider.style.height = height + 'px';
     };
 
-    //function for creating prev-button
-    var prevConstructor = function() {
-        var prev = document.createElement('div');
-        prev.classList.add('prev');
-        prev.addEventListener('click', self.prev, true);
-        controls.appendChild(prev);
-    };
-
-    //function for creating next-button
-    var nextConstructor = function() {
-        var next = document.createElement('div');
-        next.classList.add('next');
-        next.addEventListener('click', self.next, true);
-        controls.appendChild(next);
+    //function for creating prev- or next-buttons
+    var btnConstructor = function(btnName) {
+        var btn = document.createElement('div');
+        btn.classList.add(btnName);
+        if (btnName === 'prev') {
+            btn.addEventListener('click', self.prev, true);
+        }
+        if (btnName === 'next') {
+            btn.addEventListener('click', self.next, true);
+        }
+        controls.appendChild(btn);
     };
 
     //function for generate dots-buttons
@@ -84,22 +81,27 @@ function TrueSlider(options) {
 
         if (destination === position) return;
         if (position < direction) {
-            dest.add('show');
+            dest.remove('hidden');
             dest.add('right');
-            dest.remove('hidden');
-            dest.remove('right');
-            current.add('hidden');
-            current.remove('show');
-
+            dest.add('delta_right');
+            items[destination].addEventListener('animationend', function(){
+                dest.remove('right', 'delta_right');
+                current.remove('show');
+                current.add('hidden');
+                dest.add('show');
+            }, true)
             position = destination;
-        } else {
-            dest.add('show');
-            dest.add('left');
-            dest.remove('hidden');
-            dest.remove('left');
-            current.add('hidden');
-            current.remove('show');
 
+        } else {
+            dest.remove('hidden');
+            dest.add('left');
+            dest.add('delta_left');
+            items[destination].addEventListener('animationend', function(){
+                dest.remove('left', 'delta_left');
+                current.remove('show');
+                current.add('hidden');
+                dest.add('show');
+            }, true)
             position = destination;
         }
     };
@@ -118,13 +120,12 @@ function TrueSlider(options) {
         }
     };
 
-
     // this function wait 0.4s unless item's content is loading
     setTimeout(sliderHeight, 500);
 
-    prevConstructor();
+    btnConstructor('prev');
     dotsConstructor();
-    nextConstructor();
+    btnConstructor('next');
 
     startAutoplay();
 
