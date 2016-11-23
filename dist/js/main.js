@@ -1,2 +1,0 @@
-"use strict";!function(){new TrueSlider({position:2})}();
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uanMiXSwibmFtZXMiOlsiVHJ1ZVNsaWRlciIsInBvc2l0aW9uIl0sIm1hcHBpbmdzIjoiQUFBQSxjQUNBLFdBQ0ksR0FBSUEsYUFBWUMsU0FBVSIsImZpbGUiOiJtYWluLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXCJ1c2Ugc3RyaWN0XCI7XG4oZnVuY3Rpb24gKCkge1xuICAgIG5ldyBUcnVlU2xpZGVyKHtwb3NpdGlvbjogMn0pO1xufSkoKTsiXX0=
