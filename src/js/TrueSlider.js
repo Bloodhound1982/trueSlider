@@ -7,16 +7,16 @@
  *
  */
 function TrueSlider(options) {
-    var self = this;
-    var slider = document.querySelector("[data-slider='slider']");
-    var items = slider.querySelectorAll(".slider_item");
-    var controls = document.querySelector(".controls");
-    var itemsLength = items.length;
-    var position = options.position || 0;
-    var autoplay = options.autoplay;
+    let self = this;
+    let slider = document.querySelector("[data-slider='slider']");
+    let items = slider.querySelectorAll(".slider_item");
+    let controls = document.querySelector(".controls");
+    let itemsLength = items.length;
+    let position = options.position || 0;
+    let autoplay = options.autoplay;
 
     //add .show or .hidden to items
-    items.forEach(function(element, index, arr) {
+    items.forEach(function(element, index) {
         if (index === position) {
             element.classList.add('show');
             return;
@@ -25,16 +25,16 @@ function TrueSlider(options) {
     });
 
     //function define slider height, taking item's height
-    var sliderHeight = function() {
-        var height = Math.max(items[position].offsetHeight,
+    let sliderHeight = function() {
+        let height = Math.max(items[position].offsetHeight,
             items[position].clientHeight,
             items[position].scrollHeight);
         slider.style.height = height + 'px';
     };
 
     //function for creating prev- or next-buttons
-    var btnConstructor = function(btnName) {
-        var btn = document.createElement('div');
+    let btnConstructor = function(btnName) {
+        let btn = document.createElement('div');
         btn.classList.add(btnName);
         if (btnName === 'prev') {
             btn.addEventListener('click', self.prev, true);
@@ -46,17 +46,17 @@ function TrueSlider(options) {
     };
 
     //function for generate dots-buttons
-    var dotsConstructor = function() {
-        var pagination = document.createElement('div');
+    let dotsConstructor = function() {
+        let pagination = document.createElement('div');
         pagination.classList.add('.pagination');
-        for(var i = 1; i <= itemsLength; i++) {
-            var item = document.createElement('div');
+        for(let i = 1; i <= itemsLength; i++) {
+            let item = document.createElement('div');
             item.innerHTML = i;
             item.classList.add('pag_item');
             pagination.appendChild(item);
         }
         pagination.children.forEach = [].forEach;
-        pagination.children.forEach(function(element, index, arr) {
+        pagination.children.forEach(function(element, index) {
             element.addEventListener('click', function() {
                 return move(index);
             }, true);
@@ -65,19 +65,19 @@ function TrueSlider(options) {
     };
 
     //start (or not) slide-show
-    var startAutoplay = function() {
+    let startAutoplay = function() {
         if (autoplay) {
             setInterval(self.next, autoplay * 1000);
         }
     };
 
     //function with logic for moving items
-    var move = function(direction) {
-        var destination = direction;
+    let move = function(direction) {
+        let destination = direction;
         if(direction === itemsLength) destination = 0;
         if(direction === -1) destination = itemsLength - 1;
-        var dest = items[destination].classList;
-        var current = items[position].classList;
+        let dest = items[destination].classList;
+        let current = items[position].classList;
 
         if (destination === position) return;
         if (position < direction) {
@@ -89,8 +89,9 @@ function TrueSlider(options) {
                 current.remove('show');
                 current.add('hidden');
                 dest.add('show');
-            }, true)
-            position = destination;
+                position = destination;
+
+            }, true);
 
         } else {
             dest.remove('hidden');
@@ -101,8 +102,9 @@ function TrueSlider(options) {
                 current.remove('show');
                 current.add('hidden');
                 dest.add('show');
-            }, true)
-            position = destination;
+                position = destination;
+
+            }, true);
         }
     };
 
