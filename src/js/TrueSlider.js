@@ -72,48 +72,57 @@ function TrueSlider(options) {
     };
 
     //function with logic for moving items
-    let move = function(direction) {
-        let destination = direction;
-        if(direction === itemsLength) destination = 0;
-        if(direction === -1) destination = itemsLength - 1;
+    let move = function(futurePosition) {
+        let destination = futurePosition;
+        if(futurePosition === itemsLength) destination = 0;
+        if(futurePosition === -1) destination = itemsLength - 1;
         let dest = items[destination].classList;
         let current = items[position].classList;
 
         if (destination === position) return;
-        if (position < direction) {
-            dest.remove('hidden');
-            dest.add('right');
-            dest.add('delta_right');
-            items[destination].addEventListener('animationend', function(){
-                dest.remove('right', 'delta_right');
-                current.remove('show');
-                current.add('hidden');
-                dest.add('show');
-                position = destination;
 
-            }, true);
+        return new Promise(function (resolve) {
+            if (position < futurePosition) {
+                dest.remove('hidden');
+                dest.add('right');
+                dest.add('delta_right');
+                items[destination].addEventListener('animationend', function(){
+                    dest.remove('right', 'delta_right');
+                    current.remove('show');
+                    current.add('hidden');
+                    dest.add('show');
+                    position = destination;
+                    resolve(true);
+                }, true);
 
-        } else {
-            dest.remove('hidden');
-            dest.add('left');
-            dest.add('delta_left');
-            items[destination].addEventListener('animationend', function(){
-                dest.remove('left', 'delta_left');
-                current.remove('show');
-                current.add('hidden');
-                dest.add('show');
-                position = destination;
+            } else {
+                dest.remove('hidden');
+                dest.add('left');
+                dest.add('delta_left');
+                items[destination].addEventListener('animationend', function(){
+                    dest.remove('left', 'delta_left');
+                    current.remove('show');
+                    current.add('hidden');
+                    dest.add('show');
+                    position = destination;
+                    resolve(false);
+                }, true);
+            }
+        });
 
-            }, true);
-        }
+
+    };
+
+    self.testNext = function() {
+        move(position+1);
     };
 
     self.next = function () {
-        move(position + 1);
+        return move(position + 1);
     };
 
     self.prev = function () {
-        move(position - 1);
+        return move(position - 1);
     };
 
     self.jumpTo = function (destination) {

@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch'),
     browserSync = require('browser-sync'),
+    babel = require('gulp-babel'),
     reload = browserSync.reload;
 
 var path = {
@@ -69,6 +70,9 @@ gulp.task('js:build', function () {
         .pipe(plumber())
         .pipe(rigger())
         .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.js))
