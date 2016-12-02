@@ -47,9 +47,7 @@
                   your_slider.next().then(result => {
                       if (result) {
                           console.log('forward');
-                      } else {
-                          console.log('backward');
-                      }
+                      } 
                   });
               }, true);
     ```
