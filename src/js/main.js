@@ -1,4 +1,10 @@
 "use strict";
 (function () {
-    new TrueSlider({position: 2});
+    let slider = new TrueSlider({});
+    document.querySelector('#test')
+            .addEventListener('click', function () {
+                slider.next().then(result => {
+                    console.log(result);
+                });
+            });
 })();

@@ -33,7 +33,29 @@
 
     ```var slider = new TrueSlider();```
 
-5. If needs, to add settings for timing slide-show or default position:
+5. If you want change control-buttons (previous and next) just add them where you need.
+    And add functions to your `eventListener()`.
+
+    *your_slider.next()* - for next slide, return `Promise` with value *`"true"`* after animations;
+    *your_slider.prev()* - for next slide, return `Promise` with value *`"false"`* after animations.
+
+    Example:
+    ```
+      document.querySelector('#next_btn')
+              .addEventListener('click', function () {
+                  your_slider.next().then(result => {
+                      if (result) {
+                          console.log('forward');
+                      } else {
+                          console.log('backward');
+                      }
+                  });
+              }, true);
+    ```
+
+
+
+6. If needs, to add settings for timing slide-show or default position:
 
     ```var slider = new TrueSlider({ position: 3, autoplay: 3 });```
     
@@ -41,9 +63,10 @@
     
     *autoplay* - delay in seconds between slides.
 
-6. ***`style.scss`*** has two variables:
+7. ***`style.scss`*** has two variables:
 
    *$button_color* - color shadow and border for control buttons,
    
    *$slider_width* - True Slider's width in percent relatively browser width.
+
 
