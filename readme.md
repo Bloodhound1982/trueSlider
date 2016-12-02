@@ -37,6 +37,7 @@
     And add functions to your `eventListener()`.
 
     *your_slider.next()* - for next slide, return `Promise` with value *`"true"`* after animations;
+    
     *your_slider.prev()* - for next slide, return `Promise` with value *`"false"`* after animations.
 
     Example:
