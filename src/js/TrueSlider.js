@@ -113,10 +113,6 @@ function TrueSlider(options) {
 
     };
 
-    self.testNext = function() {
-        move(position+1);
-    };
-
     self.next = function () {
         return move(position + 1);
     };
