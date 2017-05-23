@@ -1,6 +1,6 @@
-#True Slider.
+# True Slider.
 
-###For working with True Slider:
+### For working with True Slider:
 
 1. Add ***`TrueSlider.js`*** from *`src/js/`* to your index.html file:
 
